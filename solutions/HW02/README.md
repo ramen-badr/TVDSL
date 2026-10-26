@@ -86,6 +86,15 @@ unary     = "-" unary | primary ;
 primary   = INT | "true" | "false" | quant | IDENT primaryTail | "(" expr ")" ;
 primaryTail = { "(" [ args ] ")" | "[" expr "]" } ;      (* вызов и/или обращение a[i] *)
 quant     = ("forall" | "exists") "(" IDENT ":" type "|" expr ")" ;
+
+relOp     = "==" | "!=" | "<=" | ">=" | "<" | ">" ;
+
+letter    = "A" | ... | "Z" | "a" | ... | "z" ;
+digit     = "0" | ... | "9" ;
+digit1    = "1" | ... | "9" ;
+
+IDENT     = ( letter | "_" ) { letter | digit | "_" } ;
+INT       = "0" | digit1 { digit } ;
 ```
 
 Приоритеты операций (от низшего к высшему), правоассоциативна только импликация:
